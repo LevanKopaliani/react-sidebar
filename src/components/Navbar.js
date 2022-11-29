@@ -3,11 +3,12 @@ import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { Link } from "react-router-dom";
 import "../App.css";
-import { IconContext } from "react-icon";
+import { IconContext } from "react-icons";
+import { SidebarData } from "./SidebarData";
 
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
-  const showSidebar = () => setSidebar(sidebar);
+  const showSidebar = () => setSidebar(!sidebar);
 
   return (
     <>
@@ -21,13 +22,14 @@ function Navbar() {
           <ul className="nav-menu-items" onClick={showSidebar}>
             <li className="navbar-toggle">
               <Link to="#" className="menu-bars">
-                <AiIcons.AiotlineClose />
+                <AiIcons.AiOutlineClose />
               </Link>
             </li>
-            {sidebarData.map((item, index) => {
+            {SidebarData.map((item, index) => {
               return (
                 <li key={index} className={item.cName}>
                   <Link to={item.path}>
+                    {item.icons}
                     <span>{item.title}</span>
                   </Link>
                 </li>
